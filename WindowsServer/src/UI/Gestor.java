@@ -19,9 +19,9 @@ public class Gestor extends JFrame {
         ArrayList data = new ArrayList();
 
         //  Connect to an MySQL Database, run query, get result set
-        String url = "jdbc:mysql://127.0.0.1/notiserver";
+        String url = "jdbc:mysql://127.0.0.1/servicew";
         String userid = "root";
-        String password = "oxnock2020";
+        String password = "12";
         String sql = "SELECT idNotificaciones,Titulo,Descripcion FROM notificaciones where notificaciones.nuevo=0 ";
 
 
@@ -97,23 +97,22 @@ public class Gestor extends JFrame {
         JButton boton = new JButton("Volver");
         boton.reshape(20, 90, 60, 40);// x,y,ancho,largo
         boton.addActionListener((e) -> {
+            Actualizar();
             Principal oGrafico = new Principal();
             oGrafico.setVisible(true);
             this.dispose();
-            Actualizar();
-            
-
         });
         getContentPane().add(boton, BorderLayout.BEFORE_FIRST_LINE);
 
     }
 
+   
     public void Actualizar() {
         ArrayList columnNames = new ArrayList();
         ArrayList data = new ArrayList();
-        String url = "jdbc:mysql://127.0.0.1/notiserver";
+        String url = "jdbc:mysql://127.0.0.1/servicew";
         String userid = "root";
-        String password = "oxnock2020";
+        String password = "12";
         String sqlU = "UPDATE  notificaciones set notificaciones.nuevo=1 where notificaciones.nuevo=0";
         
         try {Connection connection = DriverManager.getConnection(url, userid, password);

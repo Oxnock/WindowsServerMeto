@@ -13,6 +13,8 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.SwingWorker;
 import windowsserver.IObservable;
 import windowsserver.IObserver;
 import windowsserver.ObservadorDeConsola;
@@ -31,6 +33,7 @@ public class Principal extends javax.swing.JFrame implements IObserver {
      */
     public static javax.swing.JLabel l;
     private IObservable observable;
+    private final Consulta consulta = new Consulta();
 
 public static  void pp(int x){
         l.setText(Integer.toString(x));
@@ -51,7 +54,19 @@ public static  void pp(int x){
     public Principal() {
 
         initComponents();
-Update();
+        new Thread(new Runnable() {
+            public void run() {
+                try {
+                    while (true) {
+                        lblNumeros.setText(Integer.toString(consulta.Notificaciones()));
+                        Thread.sleep(1000);
+                    }
+                } catch (InterruptedException e) {
+                    JOptionPane.showMessageDialog(null, e);
+                }
+            }
+        }).start();
+
     }
 
     @SuppressWarnings("unchecked")

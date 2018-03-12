@@ -22,7 +22,7 @@ public static Connection conexion() {
         
      try {
             Class.forName("org.gjt.mm.mysql.Driver");
-            conectar = DriverManager.getConnection("jdbc:mysql://localhost/WindowsService","root","oxnock2020");
+            conectar = DriverManager.getConnection("jdbc:mysql://localhost/servicew","root","12");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error de conexion");
         } catch (ClassNotFoundException ex) {
