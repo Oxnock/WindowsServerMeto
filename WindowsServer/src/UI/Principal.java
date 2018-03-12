@@ -5,7 +5,6 @@
  */
 package UI;
 
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -20,13 +19,11 @@ import windowsserver.IObserver;
 import windowsserver.ObservadorDeConsola;
 import static windowsserver.ObservadorDeConsola.contar;
 
-
 /**
  *
  * @author jose
  */
 public class Principal extends javax.swing.JFrame implements IObserver {
-
 
     /**
      * Creates new form NewJFrame
@@ -35,14 +32,16 @@ public class Principal extends javax.swing.JFrame implements IObserver {
     private IObservable observable;
     private final Consulta consulta = new Consulta();
 
-public static  void pp(int x){
+    public static void pp(int x) {
         l.setText(Integer.toString(x));
-}
+    }
+
     @Override
     public void Update() {
         lblNumeros.setText(Integer.toString(contar()));
         pack();
     }
+
     public Principal(IObservable observable) {
 
         initComponents();
@@ -59,7 +58,7 @@ public static  void pp(int x){
                 try {
                     while (true) {
                         lblNumeros.setText(Integer.toString(consulta.Notificaciones()));
-                        Thread.sleep(1000);
+                        Thread.sleep(60000);
                     }
                 } catch (InterruptedException e) {
                     JOptionPane.showMessageDialog(null, e);
@@ -156,9 +155,9 @@ public static  void pp(int x){
     private void btnNotificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNotificacionActionPerformed
         Gestor oGrafico = new Gestor();
         oGrafico.setVisible(true);
-           Update();
+        Update();
         this.dispose();
-     
+
     }//GEN-LAST:event_btnNotificacionActionPerformed
 
     /**
