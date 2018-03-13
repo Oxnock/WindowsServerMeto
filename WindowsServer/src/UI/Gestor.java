@@ -5,7 +5,6 @@
  */
 package UI;
 
-
 import java.awt.*;
 import java.sql.*;
 import java.util.*;
@@ -14,7 +13,25 @@ import javax.swing.table.*;
 
 public class Gestor extends JFrame {
 
+    private JButton boton;
+
     public Gestor() {
+
+        setBounds(300, 90, 1100, 900);//x, y, ancho, largo
+        
+        
+        boton = new JButton("Volver");
+        boton.setBounds(983, 800, 100, 50);// x,y,ancho,largo
+        boton.setBackground(Color.GREEN);
+
+        boton.addActionListener((e) -> {
+            Actualizar();
+            Principal oGrafico = new Principal();
+            oGrafico.setVisible(true);
+            this.dispose();
+        });
+        getContentPane().add(boton, BorderLayout.SOUTH);
+
         ArrayList columnNames = new ArrayList();
         ArrayList data = new ArrayList();
 
@@ -23,7 +40,6 @@ public class Gestor extends JFrame {
         String userid = "root";
         String password = "12";
         String sql = "SELECT idNotificaciones,Titulo,Descripcion FROM notificaciones where notificaciones.nuevo=0 ";
-
 
         // Java SE 7 has try-with-resources
         // This will ensure that the sql objects are closed when the program 
@@ -81,6 +97,7 @@ public class Gestor extends JFrame {
 
                     if (o != null) {
                         return o.getClass();
+
                     }
                 }
 
@@ -93,20 +110,11 @@ public class Gestor extends JFrame {
         getContentPane().add(scrollPane);
 
         JPanel buttonPanel = new JPanel();
-        getContentPane().add(buttonPanel, BorderLayout.SOUTH);
-        JButton boton = new JButton("Volver");
-        boton.reshape(20, 90, 60, 40);// x,y,ancho,largo
-        boton.addActionListener((e) -> {
-            Actualizar();
-            Principal oGrafico = new Principal();
-            oGrafico.setVisible(true);
-            this.dispose();
-        });
-        getContentPane().add(boton, BorderLayout.BEFORE_FIRST_LINE);
+        getContentPane().add(buttonPanel, BorderLayout.PAGE_END);
+        
 
     }
 
-   
     public void Actualizar() {
         ArrayList columnNames = new ArrayList();
         ArrayList data = new ArrayList();
@@ -114,12 +122,13 @@ public class Gestor extends JFrame {
         String userid = "root";
         String password = "12";
         String sqlU = "UPDATE  notificaciones set notificaciones.nuevo=1 where notificaciones.nuevo=0";
-        
-        try {Connection connection = DriverManager.getConnection(url, userid, password);
-                Statement stmt = connection.createStatement();
-                PreparedStatement pst = connection.prepareStatement(sqlU);
-                pst.executeUpdate();
-    
+
+        try {
+            Connection connection = DriverManager.getConnection(url, userid, password);
+            Statement stmt = connection.createStatement();
+            PreparedStatement pst = connection.prepareStatement(sqlU);
+            pst.executeUpdate();
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
