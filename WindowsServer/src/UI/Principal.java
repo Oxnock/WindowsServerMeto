@@ -58,7 +58,7 @@ public class Principal extends javax.swing.JFrame implements IObserver {
                 try {
                     while (true) {
                         lblNumeros.setText(Integer.toString(consulta.Notificaciones()));
-                        Thread.sleep(60000);
+                        Thread.sleep(1000);
                     }
                 } catch (InterruptedException e) {
                     JOptionPane.showMessageDialog(null, e);

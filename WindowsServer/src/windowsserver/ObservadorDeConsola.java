@@ -39,9 +39,9 @@ public class ObservadorDeConsola implements IObserver {
         ArrayList r = new ArrayList();
         ArrayList columnNames = new ArrayList();
         int valor = 0;
-        String url = "jdbc:mysql://127.0.0.1/pppp";
+        String url = "jdbc:mysql://127.0.0.1/servicew";
         String userid = "root";
-        String password = "oxnock2020";
+        String password = "12";
         String sql = "SELECT idNotificaciones,Titulo,Descripcion FROM notificaciones where notificaciones.nuevo=0 ";
 
         try (Connection connection = DriverManager.getConnection(url, userid, password);
