@@ -1,4 +1,4 @@
- /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -16,11 +16,12 @@ public class Gestor extends JFrame {
     private JButton boton;
 
     public Gestor() {
+        this.setResizable(false);
 
-        setBounds(300, 90, 1100, 900);//x, y, ancho, largo
+        setBounds(250, 20, 900, 700);//x, y, ancho, largo
 
         boton = new JButton("Volver");
-        boton.setBounds(983, 800, 100, 50);// x,y,ancho,largo
+        boton.setBounds(792, 610, 100, 50);// x,y,ancho,largo
         boton.setBackground(Color.GREEN);
 
         boton.addActionListener((e) -> {
